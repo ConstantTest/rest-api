@@ -1,0 +1,9 @@
+# ignore directories
+
+.idea/
+
+*/**/target/
+
+# ignore all files ending with *.iml in current directory and any of its subdirectories
+
+*.iml
