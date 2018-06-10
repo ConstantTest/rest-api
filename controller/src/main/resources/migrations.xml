@@ -13,16 +13,13 @@
 
     <changeSet id="1" author="root">
 
-        <createTable tableName="person">
-            <column name="id" type="int" autoIncrement="true">
+        <createTable tableName="prod">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="firstname" type="varchar(50)"/>
-            <column name="lastname" type="varchar(50)">
+            <column name="productName" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="state" type="char(2)"/>
         </createTable>
     </changeSet>
-
 </databaseChangeLog>

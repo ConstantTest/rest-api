@@ -4,19 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <prerequisites>
+        <maven>3.0.0</maven>
+    </prerequisites>
+
     <groupId>com.oshen.rest</groupId>
     <artifactId>rest-api</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>main</module>
+        <!--<module>main</module>-->
         <module>dao</module>
         <module>service</module>
-        <module>web</module>
+        <module>controller</module>
     </modules>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <dropwizard.version>1.3.2</dropwizard.version>
         <spring.version>5.0.5.RELEASE</spring.version>
     </properties>
 
@@ -24,14 +31,62 @@
         <developer>
             <id>my-unique-id</id>
             <name>Alex</name>
-            <email>my_email@email.com</email>
+            <email>oshen@softserveinc.com</email>
             <organization>company</organization>
             <roles>
-                <role>developer</role>
+                <role>java developer</role>
             </roles>
-            <url>https://github.com/ConstantTest/MyRest.git</url>
+            <url>https://github.com/ConstantTest/rest-api.git</url>
         </developer>
     </developers>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-bom</artifactId>
+                <version>${dropwizard.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Spring Framework -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.dropwizard/dropwizard-core -->
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+            <version>1.3.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.dropwizard/dropwizard-hibernate -->
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-hibernate</artifactId>
+            <version>1.4.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+        <!--<dependency>-->
+            <!--<groupId>org.liquibase</groupId>-->
+            <!--<artifactId>liquibase-core</artifactId>-->
+            <!--<version>3.6.1</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>2.2.5</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -52,43 +107,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <!-- Spring Framework -->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-context</artifactId>-->
-            <!--<version>${spring.version}</version>-->
-        <!--</dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.apache.maven/maven-artifact -->
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-artifact</artifactId>
-            <version>3.5.3</version>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/io.dropwizard/dropwizard-core -->
-        <dependency>
-            <groupId>io.dropwizard</groupId>
-            <artifactId>dropwizard-core</artifactId>
-            <version>1.3.3</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>3.6.1</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
-        <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>2.2.5</version>
-        </dependency>
-
-    </dependencies>
 </project>
