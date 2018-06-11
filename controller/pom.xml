@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <mainClass>com.alex.rest.RestApplication</mainClass>
+        <mainClass>com.oshen.controller.RestApplication</mainClass>
     </properties>
 
     <dependencies>
@@ -27,13 +27,8 @@
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-migrations</artifactId>
+            <version>${dropwizard.version}</version>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>org.mariadb.jdbc</groupId>-->
-            <!--<artifactId>mariadb-java-client</artifactId>-->
-            <!--<version>2.2.5</version>-->
-        <!--</dependency>-->
     </dependencies>
 
     <build>
@@ -84,7 +79,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>${maven.compiler.plugin}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -110,21 +105,6 @@
                         <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.6.1</version>
-                <configuration>
-                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>update</goal>
                         </goals>
                     </execution>
                 </executions>

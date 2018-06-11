@@ -13,7 +13,7 @@
 
     <changeSet id="1" author="root">
 
-        <createTable tableName="prod">
+        <createTable tableName="products">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

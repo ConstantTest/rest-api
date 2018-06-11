@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
+@Path("products")
 public class ProductResource {
 
-    private final ProductService productService;
+    private ProductService productService;
 
     @Autowired
     public ProductResource(ProductService productService) {
@@ -23,32 +26,37 @@ public class ProductResource {
     // Retrieve
     @GET
     @UnitOfWork
+    @Produces(MediaType.APPLICATION_JSON)
     public List<ProductDto> findAll() {
-        return productService.findAll();
+        return Arrays.asList(new ProductDto("One"), new ProductDto("Two"));
     }
 
-    @GET
-    @Path("/{id}")
-    @UnitOfWork
-    public ProductDto getProductDto(@PathParam("id") Long id) {
-        return findSafely(id);
-    }
+    public ProductResource() {
 
-    // Create/update
-    @POST
-    @UnitOfWork
-    public void createProductDto(ProductDto dto) {
-        productService.create(dto);
     }
+//
+//    @GET
+//    @Path("/{id}")
+//    @UnitOfWork
+//    public ProductDto getProductDto(@PathParam("id") Long id) {
+//        return findSafely(id);
+//    }
 
-    private ProductDto findSafely(long productId) {
-        return productService.findById(productId);
-    }
-
-    @DELETE
-    @UnitOfWork
-    @Path("/{id}")
-    public void delete(@PathParam("id") long id) {
-        productService.delete(id);
-    }
+//    // Create/update
+//    @POST
+//    @UnitOfWork
+//    public void createProductDto(ProductDto dto) {
+//        productService.create(dto);
+//    }
+//
+//    private ProductDto findSafely(long productId) {
+//        return productService.findById(productId);
+//    }
+//
+//    @DELETE
+//    @UnitOfWork
+//    @Path("/{id}")
+//    public void delete(@PathParam("id") long id) {
+//        productService.delete(id);
+//    }
 }
